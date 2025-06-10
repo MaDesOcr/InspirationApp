@@ -13,7 +13,8 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QuoteScreen(onBackClick: () -> Unit) {
+fun QuoteScreen(onBackClick: () -> Unit,
+                toTheEnd: () -> Unit) {
     var quote by remember { mutableStateOf("Chargement...") }
 
     LaunchedEffect(Unit) {
@@ -50,6 +51,10 @@ fun QuoteScreen(onBackClick: () -> Unit) {
                 text = quote,
                 style = MaterialTheme.typography.bodyLarge
             )
+
+            Button(onClick = toTheEnd) {
+                Text("Vers la page de fin")
+            }
         }
     }
 }

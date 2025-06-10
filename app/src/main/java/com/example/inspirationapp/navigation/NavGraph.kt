@@ -5,12 +5,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.inspirationapp.ui.EndScreen
 import com.example.inspirationapp.ui.QuoteScreen
 import com.example.inspirationapp.ui.WelcomeScreen
 
 object Destinations {
     const val Welcome = "welcome"
     const val Quote   = "quote"
+    const val End = "end"
 }
 
 @Composable
@@ -33,8 +35,16 @@ fun NavGraph(
             QuoteScreen(
                 onBackClick = {
                     navController.popBackStack()  // retourne à l'accueil
+                },
+                toTheEnd = {
+                    navController.navigate(Destinations.End)
                 }
             )
         }
+
+        composable(Destinations.End){
+            EndScreen()
+        }
+
     }
 }
